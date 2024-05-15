@@ -1,19 +1,47 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
+import static java.lang.System.out;
+
 public class Main {
+    private static final String MESSAGE_OF_ERRORS="Error: invalid operation ";
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+            Scanner scanner=new Scanner(System.in);
+            out.println("Please enter first number");
+            double num1=scanner.nextInt();
+            out.println("Please enter your operation");
+            char operation=scanner.next().charAt(0);
+            out.println("Please enter second number");
+            double num2= scanner.nextInt();
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+            double result = 0;
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 != 0) {
+                        result = num1 / num2;
+                    } else {
+                        out.println(MESSAGE_OF_ERRORS+":Division by zero!");
+                        return;
+                    }
+                    break;
+                default:
+                    out.println(MESSAGE_OF_ERRORS);
+                    return;
+            }
+
+            out.println("Result: " + result);
+
+
     }
 }
